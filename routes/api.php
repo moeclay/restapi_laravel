@@ -63,6 +63,12 @@ Route::middleware('auth:api')->post('/articles', 'ArticleController@store');
 Route::middleware('auth:api')->put('/articles/{article}', 'ArticleController@update');
 Route::middleware('auth:api')->delete('/articles/{article}', 'ArticleController@delete');
 
-// Route::post('register', 'Auth\RegisterController@registered');
-// Route::post('login', 'Auth\LoginController@login');
-// Route::post('logout', 'Auth\LoginController@logout');
+
+// ongkir api
+Route::middleware('auth:api')->get('/getprovinsi', 'OngkirController@index');
+Route::middleware('auth:api')->get('/getkota', 'OngkirController@getkota');
+Route::middleware('auth:api')->get('/getkota/{idprovinsi}', 'OngkirController@getkotaidprovinsi');
+Route::middleware('auth:api')->get('/getkecamatan/{idkota}', 'OngkirController@getkecamatanidkota');
+
+// /getbiaya/2477/2478/1/jne
+Route::middleware('auth:api')->get('/getbiaya/{origin}/{destination}/{weight}/{courier}', 'OngkirController@getbiaya');

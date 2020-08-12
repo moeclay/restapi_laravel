@@ -62,11 +62,19 @@ class ContohController extends Controller
     public function tes2(Request $request){
         $email = $request->input('email');
 
-        $nama = Fungsi::get_validation($email);
-        $data = array(
-            'code' => 200,
-            'data' => $nama
-        );
-        return response()->json($data, 200);
+        $dataauth = Fungsi::get_validation($email);
+        if($dataauth === null){
+            $data = array(
+                'code' => 401,
+                'message' => 'user not actived'
+            );
+            return response()->json($data, 401);
+        }else{
+            $data = array(
+                'code' => 200,
+                'data' => $dataauth
+            );
+            return response()->json($data, 200);
+        }
     }
 }
