@@ -1,11 +1,8 @@
 Daftar API Pandawa24Jam
-- 
 
+## Ongkir
+- getprovinsi
+- getkota
+- getkecamatan
+- getbiaya
 
-
-
-
-
-RestAPI mentah
--- get provinsi
-http://localhost/ongkir/provinsi.php
