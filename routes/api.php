@@ -72,3 +72,7 @@ Route::middleware('auth:api')->get('/getkecamatan/{idkota}', 'OngkirController@g
 
 // /getbiaya/2477/2478/1/jne
 Route::middleware('auth:api')->get('/getbiaya/{origin}/{destination}/{weight}/{courier}', 'OngkirController@getbiaya');
+
+
+// login
+Route::post('/store', 'UserController@store');

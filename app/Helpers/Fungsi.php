@@ -4,6 +4,14 @@ namespace App\Helpers;
 use Illuminate\Support\Facades\DB;
 
 class Fungsi {
+	
+	// !! important
+	// get email exists
+	public static function check_email($email){
+		$user = DB::table('users')->where('email', $email)->first();
+		return (isset($user->email) ? 'true' : 'false');
+	}
+
 
 	// rupiahFormat
 	public static function rupiahFormat($amount = 0){
@@ -11,7 +19,7 @@ class Fungsi {
 	}
 
 	public static function hallo(){
-		return 'Hallo hallo';
+		return 'Hallo helper | Helper/Fngsi.php';
 	}
 
 	// get username
@@ -19,6 +27,7 @@ class Fungsi {
 		$user = DB::table('users')->where('id', $user_id)->first();
 		return (isset($user->name) ? $user->name : '');
 	}
+
 
 	public static function get_validation($email_param){
 		$user = DB::table('users')->where('email', $email_param)->where('is_active',true)->first();

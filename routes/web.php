@@ -48,6 +48,9 @@ Route::get('/contoh_edit/{id}', 'ContohController@edit');
 Route::post('/contoh_update/{id}', 'ContohController@update');
 Route::get('/contoh_hapus/{id}', 'ContohController@destroy');
 
-Auth::routes();
+// route auth user
+Route::group(['prefix' => 'admin'], function(){
+    Auth::routes();
+});
 
 Route::get('/home', 'HomeController@index')->name('home');

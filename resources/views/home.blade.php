@@ -4,9 +4,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-lg-12">
-            <div class="panel panel-default">
-                <p>User: {{ Auth::user()->name }}</p>
-                <p>Token: {{ Auth::user()->api_token }}</p>
+            <div class="panel panel-default" style="padding: 5px;">
+                <p>
+                <b>User:</b> {{ Auth::user()->name }} <br>
+                <b>Status:</b> {{ Auth::user()->is_active }} <br>
+                <b>Token:</b> {{ Auth::user()->api_token }}
+                </p>
             </div>
         </div>
     </div>
