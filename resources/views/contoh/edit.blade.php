@@ -28,3 +28,7 @@
 		</div>
 	</div>
 @endsection
+
+<script type="text/javascript">
+	console.log('edit');
+</script>

@@ -48,6 +48,9 @@ Route::get('/contoh_edit/{id}', 'ContohController@edit');
 Route::post('/contoh_update/{id}', 'ContohController@update');
 Route::get('/contoh_hapus/{id}', 'ContohController@destroy');
 
+// cari crud
+Route::get('/contoh/cari','ContohController@cari');
+
 // route auth user
 Route::group(['prefix' => 'admin'], function(){
     Auth::routes();

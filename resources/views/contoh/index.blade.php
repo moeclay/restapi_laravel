@@ -26,6 +26,12 @@
 					</div>
 					@endif
 
+					<p>Cari Data Pegawai</p>
+					<form action="{{ url('contoh/cari') }} " method="GET" class="form-inline mt-2 mb-2">
+						<input class="form-control col-md-5 mr-2" type="text" name="cari" placeholder="Cari Pegawai" value="{{ old('cari') }}" />
+						<input class="btn btn-success" type="submit" value="Cari Pegawai">
+					</form>
+
 					<table class="table">
 						<thead class="thead-dark">
 							<tr align="center">
@@ -56,8 +62,16 @@
 					</table>
 
 					{{ $berita->links('pagination::bootstrap-4') }}
+					<hr>
+					Halaman : {{ $berita->currentPage() }} <br/>
+					Jumlah Data : {{ $berita->total() }} <br/>
+					Data Per Halaman : {{ $berita->perPage() }} <br/>
 				</div>
 			</div>
 		</div>
 	</div>
 @endsection
+
+<script type="text/javascript">
+	console.log('index');
+</script>

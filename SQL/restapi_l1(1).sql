@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2020 at 03:49 PM
+-- Generation Time: Aug 28, 2020 at 11:06 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -103,7 +103,9 @@ INSERT INTO `articles` (`id`, `title`, `body`, `created_at`, `updated_at`) VALUE
 (66, 'Javascript for Kids', 'Awesome to javascript for kids', '2020-07-29 05:17:58', '2020-07-29 05:17:58'),
 (67, 'Javascript for Kids', 'Awesome to javascript for kids', '2020-07-29 05:18:24', '2020-07-29 05:18:24'),
 (68, 'VueJS FrontEnd II', 'Learn VueJS FrontEnd II', '2020-07-29 05:18:26', '2020-07-29 05:25:23'),
-(70, 'VueJS FrontEnd', 'Learn VueJS FrontEnd', '2020-07-29 05:18:30', '2020-07-29 05:22:24');
+(70, 'VueJS FrontEnd', 'Learn VueJS FrontEnd', '2020-07-29 05:18:30', '2020-07-29 05:22:24'),
+(71, 'Java is Amazing', 'java GUI for Expert Code', '2020-08-11 06:43:21', '2020-08-11 06:43:21'),
+(72, 'Java is Amazing', 'Java GUI for Expert Code', '2020-08-11 06:44:09', '2020-08-11 06:44:09');
 
 -- --------------------------------------------------------
 
@@ -128,8 +130,9 @@ INSERT INTO `berita` (`id`, `nama`, `jabatan`, `waktu`, `created_at`, `updated_a
 (3, 'Moeamar', 'Programmer', '28/07/2020', '2020-07-28 02:13:46', '2020-07-28 19:51:24'),
 (4, 'Aditya', 'Head Store', '08/07/2015', '2020-07-28 02:19:44', '2020-07-28 19:50:01'),
 (7, 'Hanif B', 'Head Online', '01/02/2020', '2020-07-28 19:45:36', '2020-07-28 19:46:03'),
-(8, 'Farhan', 'Accounting', '01/02/2020', '2020-07-28 19:51:06', '2020-07-28 19:51:06'),
-(9, 'Malik', 'Finance', '01/02/2020', '2020-07-28 19:51:14', '2020-07-28 19:51:14');
+(10, 'Reza IT', 'IT Programmer', '28/07/2020', '2020-08-28 08:29:37', '2020-08-28 08:29:37'),
+(11, 'Moe Tadashi', 'Software Enginnering', '30/07/2020', '2020-08-28 08:30:00', '2020-08-28 08:30:00'),
+(12, 'Heru', 'Staff', '28/07/2020', '2020-08-28 09:00:06', '2020-08-28 09:00:06');
 
 -- --------------------------------------------------------
 
@@ -167,6 +170,13 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('desi@domain.com', '$2y$10$uvyv8kjsE2QV.lCavQEVGeHVPzKDt0fIUUwdVJd/8wp5XmT1juRF2', '2020-08-12 03:20:29');
+
 -- --------------------------------------------------------
 
 --
@@ -177,6 +187,7 @@ CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_access` enum('author','member') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'member',
+  `is_active` enum('true','false') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'false',
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -189,9 +200,16 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `is_access`, `email`, `password`, `remember_token`, `api_token`, `created_at`, `updated_at`) VALUES
-(1, 'Author', 'author', 'moeamarreza@gmail.com', '$2y$10$.76wr8yFeWbNJj8EOxMU2O3PupcJTgb4ptxJZutp9xj6t7HwbVi26', 'uPdG56NmRagLN7hTCWjPusSidklVFgIEZUAduars5qkOgbaodFjq1o2rWBa1', 'QisuD8KIF2fBhLt6l0RZT5aBsHPBW476Eab9PWFdB7XcLjpfBbsvlRLPKseB', '2020-07-29 00:33:48', '2020-07-29 00:45:30'),
-(2, 'Desi', 'member', 'desi@domain.com', '$2y$10$TTf4v1CXfDKatcPXVqLV4eQzWzr5HXT6uxSaLnxnGH320CCaG7Zfa', NULL, 'o7BJ4fqZO9Vil214Rg4dizQpAnVp1Dv67TvdXu0kQu5njYwpEtEUUXIJGW9m', '2020-07-29 00:47:13', '2020-07-29 00:47:13');
+INSERT INTO `users` (`id`, `name`, `is_access`, `is_active`, `email`, `password`, `remember_token`, `api_token`, `created_at`, `updated_at`) VALUES
+(1, 'Author', 'author', 'true', 'moeamarreza@gmail.com', '$2y$10$.76wr8yFeWbNJj8EOxMU2O3PupcJTgb4ptxJZutp9xj6t7HwbVi26', 'uPdG56NmRagLN7hTCWjPusSidklVFgIEZUAduars5qkOgbaodFjq1o2rWBa1', 'QisuD8KIF2fBhLt6l0RZT5aBsHPBW476Eab9PWFdB7XcLjpfBbsvlRLPKseB', '2020-07-29 00:33:48', '2020-07-29 00:45:30'),
+(2, 'Desi', 'member', 'true', 'desi@domain.com', '$2y$10$TTf4v1CXfDKatcPXVqLV4eQzWzr5HXT6uxSaLnxnGH320CCaG7Zfa', NULL, 'o7BJ4fqZO9Vil214Rg4dizQpAnVp1Dv67TvdXu0kQu5njYwpEtEUUXIJGW9m', '2020-07-29 00:47:13', '2020-07-29 00:47:13'),
+(4, 'Reza', 'member', 'false', 'reza@domain.com', '$2y$10$cVGiVAJvrL38ZF//GRrEeeRQj2rIt6n8EVLA/2IR07Cnd9UT9IgLK', NULL, 'msseoY2yBdPQszKOYA7ivDfu0B2cngYEHrDoIp0KzkK56nC5vNwfKclkkCjp', '2020-08-09 21:34:43', '2020-08-09 21:34:43'),
+(5, 'Anan S', 'member', 'false', 'anan@domain.com', '$2y$10$TRCgxqtP0iEt66jYmqIU7u/xKKv8a3a029hF82RP3aM.rOIi6lzfm', NULL, 'cnEpghkqGOZS3p5k6pvwr3ByyDM21K9VSJvhTZe8H2AlSrZbMVVjmkyDea8H', '2020-08-10 00:36:20', '2020-08-10 00:36:20'),
+(6, 'Hulk', 'member', 'false', 'hulk@domain.com', '$2y$10$gNeinkdKmxHsmWm/NOWkUuJd5ZWa25CO.FM2K3J7MsdcpunofqZ9e', NULL, 'txSyLLyKLrODrze7FsLvQ4USUBDNzEM3abzekQrB3Md4ZhDcsbLA0x7BOTvL', '2020-08-12 03:00:53', '2020-08-12 03:00:53'),
+(12, 'Hulk 2', 'member', 'false', 'hulk2@domain.com', '$2y$10$qfs/d45VX17hkUDS9kIZg.997kEOUWeBp8sax1ahEDgVL2WTUnWwe', NULL, 'yFFOtvosAqZd6LTjc0gsW3z2mzL6lG0nsHXC36SluaqT8ffDUr12TPzBXgx8', '2020-08-12 03:05:47', '2020-08-12 03:05:47'),
+(13, 'Hulk 3', 'member', 'false', 'hulk3@domain.com', '$2y$10$f3JxNDBBNDRjIekLTS7lDu7nZV.x7EVwUDwiB4CwpnHoMOjHXjSXS', NULL, 'G3uWwcsMFGrvUr9o2UqeCJEGfrqo3vLaRXQpgSVcWg0J3qALdDRGrOSjL8fZ', '2020-08-12 03:18:43', '2020-08-12 03:18:43'),
+(14, 'Hulk 4', 'member', 'false', 'hulk4@domain.com', '$2y$10$4tn/PhlEuVESXx/9hqecxO03q7iV24SDvCLVAJziGSICDeKdGOPvW', NULL, '8aniT5k1eMXIDSGq9lG3kX2meu7mSator9JxaQq8OJKAFK6HDdTlFRtpf9Kr', '2020-08-12 03:22:37', '2020-08-12 03:22:37'),
+(15, 'Hulk 5', 'member', 'false', 'hulk5@domain.com', '$2y$10$5tV9GWtbNZbiqeuKf.rxy.kC67KkjC.k0yq5cn0yAs2qKmXEzcdWK', NULL, 'LHDtVTHHOrY6O78Ky7HWYCxX1jE65BX0d233wmG0hJlNteL3mW5xGKhYRCib', '2020-08-14 07:49:35', '2020-08-14 07:49:35');
 
 --
 -- Indexes for dumped tables
@@ -237,13 +255,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -255,7 +273,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

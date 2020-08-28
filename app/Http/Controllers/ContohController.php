@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contoh;
 use App\Helpers\Fungsi;
+use Illuminate\Support\Facades\DB;
 
 class ContohController extends Controller
 {
@@ -12,6 +13,24 @@ class ContohController extends Controller
     	
         $berita = Contoh::orderBy('created_at','desc')->paginate(4);
         return view('contoh/index',['berita' => $berita]);
+    }
+
+    public function cari(Request $request){
+        $cari = $request->cari;
+
+        // mengambil data dari table
+        // all data
+        // $pegawai = DB::table('berita')->get();
+        if($cari == ''){
+            return redirect('contoh');
+        }else{
+            // where
+            $pegawai = DB::table('berita')
+                ->where('nama','like',"%".$cari."%")
+                ->paginate();
+
+            return view('contoh/index',['berita' => $pegawai]);
+        }
     }
 
     public function create(){
