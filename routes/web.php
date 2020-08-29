@@ -85,5 +85,8 @@ Route::get('/oto/pengguna', 'PenggunaController@index');
 // one to many
 Route::get('/otm/posts', 'PostController@index');
 
+// many to many
+Route::get('/mtm/anggota', 'AnggotaController@index');
+
 // query custom
 Route::get('/query_custom', 'SQLCommandController@index');
