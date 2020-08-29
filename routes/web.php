@@ -90,3 +90,24 @@ Route::get('/mtm/anggota', 'AnggotaController@index');
 
 // query custom
 Route::get('/query_custom', 'SQLCommandController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// encry_decry
+Route::get('/security/enc', 'DikiController@index');
+Route::get('/security/data', 'DikiController@data');
+Route::get('/security/data/{data_rahasia}', 'DikiController@data_proses');
+
+// hash
+Route::get('/security/hash','DikiController@hash');
+Route::get('/security/validhash','DikiController@validhash');
+
+// upload file
+Route::get('/upload', 'UploadController@upload');
+Route::post('/upload/proses', 'UploadController@proses_upload');
+
+// upload file db
+Route::get('/uploaddb', 'UploadController@uploaddb');
+Route::post('/uploaddb/proses', 'UploadController@uploaddb_proses');

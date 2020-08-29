@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2020 at 11:06 AM
+-- Generation Time: Aug 29, 2020 at 01:36 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -21,6 +21,66 @@ SET time_zone = "+00:00";
 --
 -- Database: `restapi_l1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `anggota`
+--
+
+CREATE TABLE `anggota` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `anggota`
+--
+
+INSERT INTO `anggota` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'Sari Tania Puspita', NULL, NULL),
+(2, 'Diki Alfarabi Hadi', NULL, NULL),
+(3, 'Luluh Sinaga', NULL, NULL),
+(4, 'Lamar Putra', NULL, NULL),
+(5, 'Banawi Kuswoyo', NULL, NULL),
+(6, 'Ratih Wijayanti', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `anggota_hadiah`
+--
+
+CREATE TABLE `anggota_hadiah` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `anggota_id` int(10) UNSIGNED NOT NULL,
+  `hadiah_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `anggota_hadiah`
+--
+
+INSERT INTO `anggota_hadiah` (`id`, `anggota_id`, `hadiah_id`, `created_at`, `updated_at`) VALUES
+(1, 6, 6, NULL, NULL),
+(2, 2, 5, NULL, NULL),
+(3, 6, 10, NULL, NULL),
+(4, 3, 4, NULL, NULL),
+(5, 3, 6, NULL, NULL),
+(6, 1, 4, NULL, NULL),
+(7, 4, 11, NULL, NULL),
+(8, 5, 5, NULL, NULL),
+(9, 2, 9, NULL, NULL),
+(10, 6, 6, NULL, NULL),
+(11, 3, 2, NULL, NULL),
+(12, 2, 3, NULL, NULL),
+(13, 1, 8, NULL, NULL),
+(14, 6, 8, NULL, NULL),
+(15, 3, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -137,6 +197,94 @@ INSERT INTO `berita` (`id`, `nama`, `jabatan`, `waktu`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gambar`
+--
+
+CREATE TABLE `gambar` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `gambar`
+--
+
+INSERT INTO `gambar` (`id`, `file`, `keterangan`, `created_at`, `updated_at`) VALUES
+(1, '1598699707_pengajuan_whatsapp.png', 'pengajuan whatsapp', '2020-08-29 11:15:07', '2020-08-29 11:15:07'),
+(2, '1598699725_Screenshot_1.jpg', 'Whatsapp Images', '2020-08-29 11:15:25', '2020-08-29 11:15:25'),
+(3, '1598699806_logo.jpeg', 'bot father', '2020-08-29 11:16:46', '2020-08-29 11:16:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hadiah`
+--
+
+CREATE TABLE `hadiah` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama_hadiah` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hadiah`
+--
+
+INSERT INTO `hadiah` (`id`, `nama_hadiah`, `created_at`, `updated_at`) VALUES
+(1, 'Kulkas', NULL, NULL),
+(2, 'Lemari', NULL, NULL),
+(3, 'Rumah', NULL, NULL),
+(4, 'Mobil', NULL, NULL),
+(5, 'Sepeda Motor', NULL, NULL),
+(6, 'Pulpen', NULL, NULL),
+(7, 'Tas', NULL, NULL),
+(8, 'Sepatu', NULL, NULL),
+(9, 'Voucher', NULL, NULL),
+(10, 'Mouse', NULL, NULL),
+(11, 'Laptop', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mahasiswa`
+--
+
+CREATE TABLE `mahasiswa` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nim` int(11) NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `mahasiswa`
+--
+
+INSERT INTO `mahasiswa` (`id`, `nama`, `nim`, `alamat`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'reza', 2312412, 'bojong gede, jawa barat', '2020-08-28 17:00:00', '2020-08-28 17:00:00', NULL),
+(2, 'Bakda Okto Prasasta', 32832, 'Ds. M.T. Haryono No. 986, Bima 96262, Lampung', '2020-08-29 02:10:18', NULL, NULL),
+(3, 'Yoga Pangestu', 32832, 'Jln. S. Parman No. 189, Tomohon 82118, KalUt', '2020-08-29 02:10:18', NULL, NULL),
+(4, 'Tasnim Karma Mandala', 32832, 'Ki. Muwardi No. 188, Tarakan 63885, SulTra', '2020-08-29 02:10:18', NULL, NULL),
+(5, 'Alika Mulyani', 32832, 'Ds. Jagakarsa No. 115, Langsa 65447, Maluku', '2020-08-29 02:10:18', NULL, NULL),
+(6, 'Kacung Lazuardi', 32832, 'Psr. Hasanuddin No. 199, Bukittinggi 16112, Jambi', '2020-08-29 02:10:18', NULL, NULL),
+(7, 'Maras Maheswara', 32832, 'Psr. Bagas Pati No. 276, Batam 62368, BaBel', '2020-08-29 02:10:18', NULL, NULL),
+(8, 'Putri Maya Prastuti', 32832, 'Ds. Baranang No. 754, Tanjung Pinang 48711, KalTeng', '2020-08-29 02:10:18', NULL, NULL),
+(9, 'Cawisono Santoso', 32832, 'Gg. Ir. H. Juanda No. 758, Jayapura 58636, Bengkulu', '2020-08-29 02:10:18', NULL, NULL),
+(10, 'Ulva Tania Astuti M.Farm', 32832, 'Jr. Kalimalang No. 609, Solok 11066, NTT', '2020-08-29 02:10:18', NULL, NULL),
+(11, 'Agnes Rachel Zulaika M.Kom.', 32832, 'Jln. Madrasah No. 971, Ambon 47578, Lampung', '2020-08-29 02:10:18', NULL, NULL),
+(12, 'Warsita Hidayanto', 12345, 'Kpg. Untung Suropati No. 570, Banjarbaru 61215, Maluku', '2020-08-29 02:11:00', NULL, NULL),
+(16, 'Reza IT', 90296001, 'Bojong Gede, Bogor, Jawa Barat', '2020-08-29 02:46:44', '2020-08-29 02:46:44', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -156,7 +304,23 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2020_07_24_024152_add_api_token_field_users', 2),
 (6, '2020_07_28_022418_create_contohs_table', 4),
 (7, '2020_07_29_042150_create_articles_table', 5),
-(8, '2020_07_24_025338_add_api_token_on_users_table', 6);
+(8, '2020_07_24_025338_add_api_token_on_users_table', 6),
+(9, '2020_08_10_071733_create_ongkirs_table', 7),
+(10, '2020_08_29_084444_create_mahasiswa_table', 7),
+(14, '2020_08_29_102326_mahasiswa_create_deleted_at', 8),
+(15, '2020_08_29_180701_create_gambars_table', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ongkirs`
+--
+
+CREATE TABLE `ongkirs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -176,6 +340,152 @@ CREATE TABLE `password_resets` (
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 ('desi@domain.com', '$2y$10$uvyv8kjsE2QV.lCavQEVGeHVPzKDt0fIUUwdVJd/8wp5XmT1juRF2', '2020-08-12 03:20:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengguna`
+--
+
+CREATE TABLE `pengguna` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pengguna`
+--
+
+INSERT INTO `pengguna` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'Padmi Kamila Hassanah S.Farm', NULL, NULL),
+(2, 'Julia Oktaviani', NULL, NULL),
+(3, 'Darmana Sitompul', NULL, NULL),
+(4, 'Naradi Nainggolan', NULL, NULL),
+(5, 'Tedi Winarno', NULL, NULL),
+(6, 'Ulya Yani Permata S.Pt', NULL, NULL),
+(7, 'Maida Uyainah', NULL, NULL),
+(8, 'Putri Dian Nasyidah M.Pd', NULL, NULL),
+(9, 'Lantar Uwais', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `judul`, `created_at`, `updated_at`) VALUES
+(1, 'Placeat saepe ea possimus provident quos est molestiae reiciendis.', NULL, NULL),
+(2, 'Totam laudantium molestiae similique sit.', NULL, NULL),
+(3, 'Aut consequatur ducimus ut non voluptatem voluptas.', NULL, NULL),
+(4, 'Ad sit voluptatem qui ut dolorem.', NULL, NULL),
+(5, 'Qui consequatur eum fuga corrupti.', NULL, NULL),
+(6, 'Quos nesciunt blanditiis amet odio.', NULL, NULL),
+(7, 'Ex doloremque consequuntur velit alias repellendus ullam.', NULL, NULL),
+(8, 'Perspiciatis a quo beatae nobis et suscipit illo.', NULL, NULL),
+(9, 'Maiores voluptate animi est enim totam.', NULL, NULL),
+(10, 'Rerum expedita inventore nulla voluptates perferendis placeat.', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `posts_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `tag`, `posts_id`, `created_at`, `updated_at`) VALUES
+(1, 'dolores', 2, NULL, NULL),
+(2, 'culpa', 3, NULL, NULL),
+(3, 'sit', 4, NULL, NULL),
+(4, 'quasi', 3, NULL, NULL),
+(5, 'inventore', 5, NULL, NULL),
+(6, 'istirahat', 7, NULL, NULL),
+(7, 'quisquam', 5, NULL, NULL),
+(8, 'fugiat', 7, NULL, NULL),
+(9, 'perspiciatis', 5, NULL, NULL),
+(10, 'voluptatem', 3, NULL, NULL),
+(11, 'non', 2, NULL, NULL),
+(12, 'ducimus', 5, NULL, NULL),
+(13, 'tempora', 4, NULL, NULL),
+(14, 'voluptatem', 10, NULL, NULL),
+(15, 'nisi', 3, NULL, NULL),
+(16, 'exercitationem', 10, NULL, NULL),
+(17, 'sed', 2, NULL, NULL),
+(18, 'tempora', 6, NULL, NULL),
+(19, 'laudantium', 7, NULL, NULL),
+(20, 'a', 6, NULL, NULL),
+(21, 'consequuntur', 9, NULL, NULL),
+(22, 'omnis', 1, NULL, NULL),
+(23, 'rerum', 9, NULL, NULL),
+(24, 'ut', 1, NULL, NULL),
+(25, 'amet', 10, NULL, NULL),
+(26, 'atque', 9, NULL, NULL),
+(27, 'at', 4, NULL, NULL),
+(28, 'hic', 3, NULL, NULL),
+(29, 'itaque', 1, NULL, NULL),
+(30, 'quia', 9, NULL, NULL),
+(31, 'consequatur', 8, NULL, NULL),
+(32, 'non', 9, NULL, NULL),
+(33, 'explicabo', 10, NULL, NULL),
+(34, 'eos', 6, NULL, NULL),
+(35, 'eveniet', 5, NULL, NULL),
+(36, 'dolor', 10, NULL, NULL),
+(37, 'magnam', 10, NULL, NULL),
+(38, 'aut', 1, NULL, NULL),
+(39, 'et', 6, NULL, NULL),
+(40, 'ut', 10, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telepon`
+--
+
+CREATE TABLE `telepon` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nomor_telepon` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pengguna_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `telepon`
+--
+
+INSERT INTO `telepon` (`id`, `nomor_telepon`, `pengguna_id`, `created_at`, `updated_at`) VALUES
+(1, '(+62) 878 0989 834', 1, NULL, NULL),
+(2, '(+62) 509 9868 0557', 2, NULL, NULL),
+(3, '023 9503 4379', 3, NULL, NULL),
+(4, '(+62) 24 1120 052', 4, NULL, NULL),
+(5, '0535 3676 2454', 5, NULL, NULL),
+(6, '0614 0945 4128', 6, NULL, NULL),
+(7, '0460 8541 5478', 7, NULL, NULL),
+(8, '(+62) 713 5497 976', 8, NULL, NULL),
+(9, '(+62) 653 4057 294', 9, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -201,19 +511,24 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `is_access`, `is_active`, `email`, `password`, `remember_token`, `api_token`, `created_at`, `updated_at`) VALUES
-(1, 'Author', 'author', 'true', 'moeamarreza@gmail.com', '$2y$10$.76wr8yFeWbNJj8EOxMU2O3PupcJTgb4ptxJZutp9xj6t7HwbVi26', 'uPdG56NmRagLN7hTCWjPusSidklVFgIEZUAduars5qkOgbaodFjq1o2rWBa1', 'QisuD8KIF2fBhLt6l0RZT5aBsHPBW476Eab9PWFdB7XcLjpfBbsvlRLPKseB', '2020-07-29 00:33:48', '2020-07-29 00:45:30'),
-(2, 'Desi', 'member', 'true', 'desi@domain.com', '$2y$10$TTf4v1CXfDKatcPXVqLV4eQzWzr5HXT6uxSaLnxnGH320CCaG7Zfa', NULL, 'o7BJ4fqZO9Vil214Rg4dizQpAnVp1Dv67TvdXu0kQu5njYwpEtEUUXIJGW9m', '2020-07-29 00:47:13', '2020-07-29 00:47:13'),
-(4, 'Reza', 'member', 'false', 'reza@domain.com', '$2y$10$cVGiVAJvrL38ZF//GRrEeeRQj2rIt6n8EVLA/2IR07Cnd9UT9IgLK', NULL, 'msseoY2yBdPQszKOYA7ivDfu0B2cngYEHrDoIp0KzkK56nC5vNwfKclkkCjp', '2020-08-09 21:34:43', '2020-08-09 21:34:43'),
-(5, 'Anan S', 'member', 'false', 'anan@domain.com', '$2y$10$TRCgxqtP0iEt66jYmqIU7u/xKKv8a3a029hF82RP3aM.rOIi6lzfm', NULL, 'cnEpghkqGOZS3p5k6pvwr3ByyDM21K9VSJvhTZe8H2AlSrZbMVVjmkyDea8H', '2020-08-10 00:36:20', '2020-08-10 00:36:20'),
-(6, 'Hulk', 'member', 'false', 'hulk@domain.com', '$2y$10$gNeinkdKmxHsmWm/NOWkUuJd5ZWa25CO.FM2K3J7MsdcpunofqZ9e', NULL, 'txSyLLyKLrODrze7FsLvQ4USUBDNzEM3abzekQrB3Md4ZhDcsbLA0x7BOTvL', '2020-08-12 03:00:53', '2020-08-12 03:00:53'),
-(12, 'Hulk 2', 'member', 'false', 'hulk2@domain.com', '$2y$10$qfs/d45VX17hkUDS9kIZg.997kEOUWeBp8sax1ahEDgVL2WTUnWwe', NULL, 'yFFOtvosAqZd6LTjc0gsW3z2mzL6lG0nsHXC36SluaqT8ffDUr12TPzBXgx8', '2020-08-12 03:05:47', '2020-08-12 03:05:47'),
-(13, 'Hulk 3', 'member', 'false', 'hulk3@domain.com', '$2y$10$f3JxNDBBNDRjIekLTS7lDu7nZV.x7EVwUDwiB4CwpnHoMOjHXjSXS', NULL, 'G3uWwcsMFGrvUr9o2UqeCJEGfrqo3vLaRXQpgSVcWg0J3qALdDRGrOSjL8fZ', '2020-08-12 03:18:43', '2020-08-12 03:18:43'),
-(14, 'Hulk 4', 'member', 'false', 'hulk4@domain.com', '$2y$10$4tn/PhlEuVESXx/9hqecxO03q7iV24SDvCLVAJziGSICDeKdGOPvW', NULL, '8aniT5k1eMXIDSGq9lG3kX2meu7mSator9JxaQq8OJKAFK6HDdTlFRtpf9Kr', '2020-08-12 03:22:37', '2020-08-12 03:22:37'),
-(15, 'Hulk 5', 'member', 'false', 'hulk5@domain.com', '$2y$10$5tV9GWtbNZbiqeuKf.rxy.kC67KkjC.k0yq5cn0yAs2qKmXEzcdWK', NULL, 'LHDtVTHHOrY6O78Ky7HWYCxX1jE65BX0d233wmG0hJlNteL3mW5xGKhYRCib', '2020-08-14 07:49:35', '2020-08-14 07:49:35');
+(1, 'Author', 'author', 'true', 'moeamarreza@gmail.com', '$2y$10$EWQKjmFB3mSa8pG63d7c8uAWOps0F7IM8YZe0lNHf4JJsgVgMGwZS', 'xBooXzLhOgTRo3yLo0QyLWO3J4H9dkel3ZvbrFB2OZgrphwE8d02VMB7TWBG', 'QisuD8KIF2fBhLt6l0RZT5aBsHPBW476Eab9PWFdB7XcLjpfBbsvlRLPKseB', '2020-07-29 00:33:48', '2020-08-29 07:03:20'),
+(16, 'Reza', 'member', 'false', 'iamreza@pandawa-mqzz.com', '$2y$10$FTBX0CLyEcUMnvy0q26FDeYAcCKDMsVyKNbOm/AOSwVs86yXWM5oC', NULL, '3fMUMwbtafzKwRDoMOIjLEVpNfHz1MOkH47geCQ1dpbjrVD0LyBmYsC28FXi', '2020-08-29 07:05:00', '2020-08-29 07:05:00');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `anggota`
+--
+ALTER TABLE `anggota`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `anggota_hadiah`
+--
+ALTER TABLE `anggota_hadiah`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `articles`
@@ -228,9 +543,33 @@ ALTER TABLE `berita`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gambar`
+--
+ALTER TABLE `gambar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hadiah`
+--
+ALTER TABLE `hadiah`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ongkirs`
+--
+ALTER TABLE `ongkirs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -238,6 +577,30 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `telepon`
+--
+ALTER TABLE `telepon`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -252,6 +615,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `anggota`
+--
+ALTER TABLE `anggota`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `anggota_hadiah`
+--
+ALTER TABLE `anggota_hadiah`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
@@ -264,16 +639,64 @@ ALTER TABLE `berita`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `gambar`
+--
+ALTER TABLE `gambar`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `hadiah`
+--
+ALTER TABLE `hadiah`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `ongkirs`
+--
+ALTER TABLE `ongkirs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `telepon`
+--
+ALTER TABLE `telepon`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
