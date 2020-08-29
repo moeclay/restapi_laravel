@@ -58,6 +58,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+<<<<<<< HEAD
 // validate form
 Route::get('/valid/input', 'FormValidController@input');
 Route::post('/valid/proses', 'FormValidController@proses');
@@ -87,3 +88,7 @@ Route::get('/otm/posts', 'PostController@index');
 
 // query custom
 Route::get('/query_custom', 'SQLCommandController@index');
+=======
+Route::get('/valid', 'FormValidController@input');
+Route::post('/valid/proses', 'FormValidController@proses');
+>>>>>>> a781f9280960873a866dfe36e5448dad68f7af9d

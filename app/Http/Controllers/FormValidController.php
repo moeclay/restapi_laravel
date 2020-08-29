@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class FormValidController extends Controller
 {
     public function input(){
+<<<<<<< HEAD
     	return view('valid/input');
     }
 
@@ -39,3 +40,12 @@ validation form pada laravel
 - bail (berhenti memvalidasi jika valid sebelumnya error)
 - email
 */
+=======
+    	echo "input";
+    }
+
+    public function proses(){
+    	echo "proses";
+    }
+}
+>>>>>>> a781f9280960873a866dfe36e5448dad68f7af9d
