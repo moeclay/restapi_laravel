@@ -57,3 +57,33 @@ Route::group(['prefix' => 'admin'], function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// validate form
+Route::get('/valid/input', 'FormValidController@input');
+Route::post('/valid/proses', 'FormValidController@proses');
+
+// eloquent
+Route::get('/eloquent/mahasiswa', 'MahasiswaController@index');
+Route::get('/eloquent/mahasiswa/tambah', 'MahasiswaController@tambah');
+Route::post('/eloquent/mahasiswa/store', 'MahasiswaController@store');
+
+Route::get('/eloquent/mahasiswa/edit/{id}', 'MahasiswaController@edit');
+Route::put('/eloquent/mahasiswa/update/{id}', 'MahasiswaController@update');
+
+Route::get('/eloquent/mahasiswa/hapus/{id}', 'MahasiswaController@hapus');
+
+// soft delete
+Route::get('/eloquent/mahasiswa/trash', 'MahasiswaController@trash');
+Route::get('/eloquent/mahasiswa/kembalikan/{id}', 'MahasiswaController@kembalikan');
+Route::get('/eloquent/mahasiswa/kembalikan_semua', 'MahasiswaController@kembalikan_semua');
+Route::get('/eloquent/mahasiswa/hapus_permanen/{id}', 'MahasiswaController@hapus_permanen');
+Route::get('/eloquent/mahasiswa/hapus_permanen_semua', 'MahasiswaController@hapus_permanen_semua');
+
+// one to one
+Route::get('/oto/pengguna', 'PenggunaController@index');
+
+// one to many
+Route::get('/otm/posts', 'PostController@index');
+
+// query custom
+Route::get('/query_custom', 'SQLCommandController@index');
