@@ -57,3 +57,6 @@ Route::group(['prefix' => 'admin'], function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/valid', 'FormValidController@input');
+Route::post('/valid/proses', 'FormValidController@proses');
