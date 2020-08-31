@@ -15,10 +15,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('hi', function(){
-	return('Hallo Dunia !');
-});
-
 Route::get('submit', function(){
 	return view('test/kirim');
 });
@@ -111,3 +107,27 @@ Route::post('/upload/proses', 'UploadController@proses_upload');
 // upload file db
 Route::get('/uploaddb', 'UploadController@uploaddb');
 Route::post('/uploaddb/proses', 'UploadController@uploaddb_proses');
+
+// laporan dompdf
+Route::get('/laporan', 'LaporanController@index');
+Route::get('/laporan/cetak_pdf', 'LaporanController@cetak_pdf');
+
+// export excell
+Route::get('/rekap', 'RekapController@index');
+Route::get('/rekap/export_excel', 'RekapController@export_excel');
+Route::post('/rekap/import_excel', 'RekapController@import_excel');
+
+// localization default
+Route::get('/form', function () {
+    return view('bahasa/biodata');
+});
+
+// localization pilih bahasa
+Route::get('/{locale}/form', function ($locale) {
+    App::setLocale($locale);
+    return view('bahasa/biodata');
+});
+
+// action url
+Route::get('halo/{nama}', 'HalloController@halo');
+Route::get('halo', 'HalloController@panggil');

@@ -77,6 +77,7 @@ return [
     |
     */
 
+    // ubah ke [en,id]
     'locale' => 'en',
 
     /*
@@ -178,6 +179,12 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\UserServiceProvider::class,
 
+        // dompdf
+        Barryvdh\DomPDF\ServiceProvider::class,
+
+        // export excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +236,11 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Fungsi' => App\Helpers\Fungsi::class,
 
+        // dompdf aliase
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        // export excel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
